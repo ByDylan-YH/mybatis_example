@@ -22,6 +22,19 @@ import java.util.List;
  *             #{dataEntity.createTime}, #{dataEntity.modifyTime})
  *         </foreach>
  *     </insert>
+ *
+ *     open="(" close=")" separator="," 这样写会把所有语句最后用括号包起来
+ *
+ * 多参数写法
+ * <insert id="saveBatchData">
+ *         INSERT INTO ${param1}
+ *         (table_name,column_name,column_type,column_comment,create_time,modify_time)
+ *         VALUES
+ *         <foreach collection="param2" item="dataEntity" separator=",">
+ *             (#{dataEntity.tableName}, #{dataEntity.columnName}, #{dataEntity.columnType}, #{dataEntity.columnComment},
+ *             #{dataEntity.createTime}, #{dataEntity.modifyTime})
+ *         </foreach>
+ *     </insert>
  */
 public interface UserDao {
 
