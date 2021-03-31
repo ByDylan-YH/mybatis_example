@@ -13,8 +13,12 @@
         <setting name="aggressiveLazyLoading" value="false"/>
         <!--配置缓存-->
         <setting name="cacheEnabled" value="true"/>
-        <!-- 控制台打印查询语句 -->
-<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+        <!-- 控制台打印查询语句,SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING -->
+<!--        配置log4j2的话,这里选LOG4J2 或者 LOG4J(都试一下),然后在log4j2.xml里配置,DEBUG只打印SQL,TRACE会打印数据-->
+<!--        <logger name="dao" level="DEBUG" additivity="false">-->
+<!--            <AppenderRef ref="Console"/>-->
+<!--        </logger>-->
+        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
     </settings>
 
     <!-- 配置环境 -->
