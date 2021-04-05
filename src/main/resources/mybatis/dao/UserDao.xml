@@ -2,15 +2,14 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="mybatis.c_dao.dao.UserDao">
-
+<mapper namespace="mybatis.dao.UserDao">
     <!--    查询所有-->
-    <select id="findAll" resultType="mybatis.c_dao.entity.User">
+    <select id="findAll" resultType="mybatis.eneity.User">
         select * from user;
     </select>
 
     <!-- 保存用户,parameterType 传入参数 -->
-    <insert id="saveUser" parameterType="mybatis.c_dao.entity.User">
+    <insert id="saveUser" parameterType="mybatis.eneity.User">
         <!-- 配置插入操作后，获取插入数据的id -->
         <selectKey keyProperty="id" keyColumn="id" resultType="int" order="AFTER">
             select last_insert_id();
@@ -19,7 +18,7 @@
     </insert>
 
     <!-- 更新用户 -->
-    <update id="updateUser" parameterType="mybatis.c_dao.entity.User">
+    <update id="updateUser" parameterType="mybatis.eneity.User">
         update user set username=#{username},`password`=#{password} where id=#{id};
     </update>
 
@@ -29,12 +28,12 @@
     </delete>
 
     <!-- 根据id查询用户 -->
-    <select id="findById" parameterType="INT" resultType="mybatis.c_dao.entity.User">
+    <select id="findById" parameterType="INT" resultType="mybatis.eneity.User">
         select * from user where id = #{id};
     </select>
 
     <!-- 根据名称模糊查询 -->
-    <select id="findByName" parameterType="string" resultType="mybatis.c_dao.entity.User">
+    <select id="findByName" parameterType="string" resultType="mybatis.eneity.User">
         select * from user where username like #{name};
         <!-- select * from user where username like '%${value}%'-->
     </select>

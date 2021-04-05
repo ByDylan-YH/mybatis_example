@@ -20,7 +20,7 @@ class MybatisTest {
     public static void main(String[] args) {
         //1.读取配置文件
         try {
-            InputStream in = Resources.getResourceAsStream("bilibili/b_annotation/SqlMapConfig.xml");
+            InputStream in = Resources.getResourceAsStream("mybatis/SqlMapConfig.xml");
             //2.创建SqlSessionFactory工厂,建造者模式:封装繁琐细节
             SqlSessionFactoryBuilder builder = new SqlSessionFactoryBuilder();
             SqlSessionFactory factory = builder.build(in);
