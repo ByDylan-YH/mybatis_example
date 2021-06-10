@@ -4,9 +4,21 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.c_dao.dao.UserDao">
 
+    <sql id="Base_Column_List">
+        de_id
+        , co_id, student_id, student_name, teacher_id, teacher_name, de_score, de_status
+    </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        <include refid="Base_Column_List"/>
+        from course_detail_info
+        where de_id = #{deId,jdbcType=INTEGER}
+    </select>
+
     <!--    查询所有-->
     <select id="findAll" resultType="mybatis.c_dao.entity.User">
-        select * from user;
+        select *
+        from user;
     </select>
 
     <!-- 保存用户,parameterType 传入参数 -->
@@ -20,17 +32,24 @@
 
     <!-- 更新用户 -->
     <update id="updateUser" parameterType="mybatis.c_dao.entity.User">
-        update user set username=#{username},`password`=#{password} where id=#{id};
+        update user
+        set username=#{username},
+            `password`=#{password}
+        where id = #{id};
     </update>
 
     <!-- 删除用户-->
     <delete id="deleteUser" parameterType="java.lang.Integer">
-        delete from user where id = #{id};
+        delete
+        from user
+        where id = #{id};
     </delete>
 
     <!-- 根据id查询用户 -->
     <select id="findById" parameterType="INT" resultType="mybatis.c_dao.entity.User">
-        select * from user where id = #{id};
+        select *
+        from user
+        where id = #{id};
     </select>
 
     <!-- 根据名称模糊查询 -->
@@ -41,7 +60,8 @@
 
     <!-- 获取用户的总记录条数 -->
     <select id="findTotal" resultType="int">
-        select count(id) from user;
+        select count(id)
+        from user;
     </select>
 
 </mapper>
