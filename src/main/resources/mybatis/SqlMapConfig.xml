@@ -5,7 +5,7 @@
 <!-- mybatis的主配置文件 -->
 <configuration>
     <!-- 配置properties-->
-    <properties resource="jdbcConfig.properties"/>
+    <properties resource="jdbc.properties"/>
 
     <settings>
         <!--开启Mybatis支持延迟加载-->
@@ -14,12 +14,19 @@
         <!--配置缓存-->
         <setting name="cacheEnabled" value="true"/>
         <!-- 控制台打印查询语句,SLF4J | LOG4J | LOG4J2 | JDK_LOGGING | COMMONS_LOGGING | STDOUT_LOGGING | NO_LOGGING -->
-<!--        配置log4j2的话,这里选LOG4J2 或者 LOG4J(都试一下),然后在log4j2.xml里配置,DEBUG只打印SQL,TRACE会打印数据-->
-<!--        <logger name="dao" level="DEBUG" additivity="false">-->
-<!--            <AppenderRef ref="Console"/>-->
-<!--        </logger>-->
+        <!--        配置log4j2的话,这里选LOG4J2 或者 LOG4J(都试一下),然后在log4j2.xml里配置,DEBUG只打印SQL,TRACE会打印数据-->
+        <!--        <logger name="dao" level="DEBUG" additivity="false">-->
+        <!--            <AppenderRef ref="Console"/>-->
+        <!--        </logger>-->
         <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
     </settings>
+
+    <typeAliases>
+        <!--        给实例类取别名-->
+        <!--        <typeAlias type="mybatis.dao.UserDao" alias="user"/>-->
+<!--        扫描实体类的包,默认别名为首字母小写-->
+        <package name="mybatis.dao"/>
+    </typeAliases>
 
     <!-- 配置环境 -->
     <environments default="mysql">
@@ -37,7 +44,6 @@
 
     <!-- 指定映射配置文件的位置，映射配置文件指的是每个dao独立的配置文件,mapper可以指定多个,mapper 和 package只能写一个 -->
     <mappers>
-        <!--        <mapper resource="bilibili/d_onetomany/dao/AccountDao.xml"/>-->
         <!--        <mapper resource="bilibili/d_onetomany/dao/AccountDao.xml"/>-->
         <package name="mybatis.dao"/>
     </mappers>

@@ -1,7 +1,7 @@
 package mybatis.dao.impl;
 
-import mybatis.c_dao.dao.UserDao;
-import mybatis.c_dao.entity.User;
+import mybatis.dao.UserDao;
+import mybatis.entity.User;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
@@ -79,6 +79,15 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> findUserByName(String username) {
+        return null;
+    }
+
+    @Override
+    public int findTotalUser() {
+        return 0;
+    }
+
     public List<User> findByName(String username) {
         //1.根据factory获取SqlSession对象
         SqlSession session = factory.openSession();
@@ -89,7 +98,6 @@ public class UserDaoImpl implements UserDao {
         return users;
     }
 
-    @Override
     public int findTotal() {
         //1.根据factory获取SqlSession对象
         SqlSession session = factory.openSession();
